@@ -27,6 +27,36 @@ const Hero = () => {
       stagger: 0.05,
       delay: 1,
     });
+
+    gsap.from(".right-leaf", {
+      opacity: 0,
+      xPercent: 100,
+      duration: 1.8,
+      ease: "expo.out",
+      stagger: 0.05,
+      delay: 1,
+    });
+
+    gsap.from(".left-leaf", {
+      opacity: 0,
+      xPercent: -100,
+      duration: 1.8,
+      ease: "expo.out",
+      stagger: 0.05,
+      delay: 1,
+    });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      })
+      .to(".right-leaf", { y: 200 }, 0)
+      .to(".left-leaf", { y: -200 }, 0);
   }, []);
 
   return (
